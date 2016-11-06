@@ -1,0 +1,24 @@
+  /* Declare second integer, double, and String variables. */
+        int ii = scan.nextInt();
+        System.out.println(i + ii);
+
+        /* Read and save an integer, double, and String to your variables.*/
+        double dd = scan.nextDouble();
+        System.out.println(d + dd);
+
+
+        /* Print the sum of both integer variables on a new line. */
+       
+        String ss = s;
+          while (scan.hasNext()) {
+              ss = ss + scan.next() + " ";
+          }
+
+        System.out.println(ss);
+
+
+        /* Print the sum of the double variables on a new line. */
+		
+        /* Concatenate and print the String variables on a new line; 
+        	the 's' variable above should be printed first. */
+
