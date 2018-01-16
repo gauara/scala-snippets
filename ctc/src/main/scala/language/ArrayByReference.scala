@@ -5,6 +5,7 @@ package language
 // array elements will change - array is passed by reference here
 // we pass test and content of test are changed in the function
 // and is reflected outside of the function
+
 object ArrayByReference extends App {
 
   def arrayReference(arr: Array[Int]): Array[Int] = {
@@ -19,4 +20,14 @@ object ArrayByReference extends App {
   result.foreach(println)
   println("***************")
   test.foreach(println)
+
+  //val numPattern = "[0-9]+".r
+  val x = BigInt(2)
+
+
+  Seq(1, 2, 3).map { i => i + 1}
+
+
+
+
 }
