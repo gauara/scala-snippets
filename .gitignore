@@ -1,6 +1,7 @@
 *.class
 *.log
 .idea
+*.DS_Store
 *workspace.xml
 # sbt specific
 .cache/
