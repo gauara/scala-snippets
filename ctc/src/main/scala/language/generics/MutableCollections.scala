@@ -67,7 +67,7 @@ class MutableCollections {
     s.foreach(println)
   }
 
-  val s: ArrayBuffer[Dog] = Seq(new Dog)
+  //val s: ArrayBuffer[Dog] = Seq(new Dog)
 
   // WONT compile
   // Since ArrayBuffer elements are mutable and hence there is risk that elements of s can be mutated and hence compiler error

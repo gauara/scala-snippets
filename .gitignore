@@ -1,6 +1,7 @@
 *.class
 *.log
 .idea
+*workspace.xml
 # sbt specific
 .cache/
 .history/
