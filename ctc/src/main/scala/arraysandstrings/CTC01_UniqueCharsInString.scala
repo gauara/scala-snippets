@@ -2,7 +2,7 @@ package arraysandstrings
 
 // STATUS - WORKING
 
-object CTC01UniqueCharsInString extends App {
+object CTC01_UniqueCharsInString extends App {
 
   def isUniqueChars1(str: String): Boolean = {
 
