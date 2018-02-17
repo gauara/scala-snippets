@@ -1,0 +1,34 @@
+Group of similar problems
+
+Pattern:-
+- Inclusion/Exclusion situation - when item is included and when not included
+
+Steps:-
+- Try to make base case - usually pre populate the first row and column
+- check for cases when item > j (sum - exclusion) and item == j ( with and w/o item) and item < j (with and w/o case)
+
+Problems:-
+
+- Coin change problem - ways to form a sum using coins of any denomination
+- 0/1 Knapsack
+
+
+MatrixChainMultiplication , LongestPalindromicSubsequence,
+
+IMPORTANT NOTES --
+
+- Make sure to clarify if there is INFINITE supply or NOT, e.g in COIN change problem we have infinite supply and
+in 0/1 Knapsack there is no infinite supply which means in INCLUDE case,
+
+YOU have to go previous row as ith ITEM can not be included as there is no infinite supply and if item is selected
+and still there is weight left over or remaining you need to get that by using other items CANT use the same item
+and hence ith row
+
+- In LongestPalindromicSubsequence we are using (i+1), which means we need to set it up before because wrong values will be read
+so make sure when we use things like i+1 or i-1 we need to make sure that those cells are set up and we are not
+end up using default values
+
+
+
+
+

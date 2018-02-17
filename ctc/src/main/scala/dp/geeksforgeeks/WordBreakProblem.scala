@@ -57,6 +57,32 @@ object WordBreakProblem extends App {
   }
 
 
+  def wordBreak2(s: String): Boolean = {
+    if (s.isEmpty) // THIS IS THE BASE CASE
+      return true
+
+    val size = s.length
+    var result = false
+
+    println("String: " + s)
+    for(i <- 1 to size) { // CAREFULLY NOTE THE SIZE HERE, its inclusive of size, perhaps for the substring reason
+      val (substr, rest) = s.splitAt(i)
+      val isPresent = inDict(substr)
+      println("Sub String: " + substr)
+      println("is Present: " + isPresent)
+
+      if(isPresent) {
+        result = wordBreak(rest)
+        return result
+      } else{
+        false
+      }
+    }
+
+    result
+  }
+
+
 
 
 
@@ -65,8 +91,11 @@ object WordBreakProblem extends App {
 
   println("************************************************")
   println("****************** Appraoch 2 ******************")
-  println("****************** Appraoch 2 ******************")
-  println("****************** Appraoch 2 ******************")
 
-  println(wordBreak("iamhappy"))
+  println(wordBreak1("iamhappy"))
+
+  println("****************** Appraoch 3 ******************")
+  println(wordBreak2("iamhappy"))
+
+
 }
