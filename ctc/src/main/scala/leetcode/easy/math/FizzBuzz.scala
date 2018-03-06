@@ -1,4 +1,4 @@
-package leetcode.easy
+package leetcode.easy.math
 
 object FizzBuzz extends App {
   def fizzBuzz(n: Int): List[String] = {

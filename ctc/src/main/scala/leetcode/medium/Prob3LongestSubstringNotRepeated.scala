@@ -1,7 +1,6 @@
-package leetcode.easy.leetcode.medium
+package leetcode.medium
 
 import arraysandstrings.CTC01_UniqueCharsInString
-import leetcode.easy.leetcode.medium.Prob3LongestSubstringNotRepeated.lengthOfLongestSubstringUsingFor
 
 object Prob3LongestSubstringNotRepeated extends App {
 

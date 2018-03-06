@@ -1,4 +1,4 @@
-package leetcode.easy
+package leetcode.easy.strings
 
 // NOTE - scala strings are immutable
 
