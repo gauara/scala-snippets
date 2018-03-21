@@ -3,7 +3,6 @@ package ctc.moderate
 object PrintPhoneDigits extends App {
 
 
-  //def printPhoneWords(number: Array[Int], curDigit: Int, output: StringBuffer, keyaPad: Map[Int, String]): Unit = {
   def printPhoneWords(number: Array[Int], curDigit: Int, output: String, keyaPad: Map[Int, String]): Unit = {
 
     // Checking at full length as output needs be filled until last char
@@ -12,9 +11,6 @@ object PrintPhoneDigits extends App {
     if (curDigit == number.length) {
       println(output)
       return
-//    } else if(number(curDigit) == 0 || number(curDigit) == 1) {
-//      // DO NOTHING
-//      printPhoneWords(number, curDigit+1, output1, keyaPad)
     } else {
       for(i <- 0 to keyaPad(number(curDigit)).length-1) {
 
@@ -40,8 +36,8 @@ object PrintPhoneDigits extends App {
     9 -> "wxyz"
   )
 
-  //val number = Array(2, 3, 4)
-  val number = Array(5, 4, 0)
+  val number = Array(2, 3, 4)
+  //val number = Array(5, 4, 0)
   //printPhoneWords(number, 0, new StringBuffer(number.length+1), kepPad)
   var output = new StringBuffer()
   output.setLength(number.length) // if you DONT setLength -- setChatAt will throw exception

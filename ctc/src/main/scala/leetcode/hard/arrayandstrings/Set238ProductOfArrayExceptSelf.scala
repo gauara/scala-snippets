@@ -1,4 +1,4 @@
-package leetcode.hard.arrays
+package leetcode.hard.arrayandstrings
 
 object Set238ProductOfArrayExceptSelf extends App {
   def productExceptSelf(nums: Array[Int]): Array[Int] = {

@@ -1,5 +1,9 @@
 package leetcode.hard.backtracking
 
+import utils.MatrixUtils
+
+import scala.collection.mutable.ArrayBuffer
+
 object Set212WordSearchII extends App {
 
   /*
@@ -89,4 +93,105 @@ object Set212WordSearchII extends App {
   //val words = Array("oath")
   println(wordSearch(grid, words))
 */
+
+
+
+  def wordSearchII(words: List[String], matrix: Array[Array[Char]]): ArrayBuffer[String] = {
+    var cache: ArrayBuffer[String] = ArrayBuffer.empty
+
+    val rows:Int = matrix.length
+    val cols:Int = matrix(0).length
+
+    words.foreach( w => {
+
+      for(i <- 0 to rows-1) {
+        for (j <- 0 to cols-1) {
+
+          if (matrix(i)(j) == w(0) && !cache.contains(w)) {
+            println(s"Outer i: $i j: $j")
+            val visited = Array.tabulate[Boolean](rows, cols)((x,y) => false)
+            val result = dfs(matrix, visited, w, 0, i, j, cache)
+            if (result) {
+              println("was here")
+            } else {
+              println("ERRRR why I am here")
+            }
+          }
+        }
+      }
+    })
+
+    if (cache.size > 0) {
+      println("Following words were found")
+      cache.foreach(println)
+    } else {
+      println(" No words found")
+    }
+    cache
+  }
+
+  def dfs(matrix: Array[Array[Char]], visited: Array[Array[Boolean]], str: String, index: Int, r: Int, c: Int, cache: ArrayBuffer[String]): Boolean = {
+
+
+
+    if (index == 0) {
+      println(str)
+      //MatrixUtils.printMatrix(visited)
+    }
+
+
+    if (index == str.length-1 && str(index) == matrix(r)(c)) {
+      cache.append(str)
+      println(s"Found word : $str")
+      return true
+    }
+
+
+    if (!MatrixUtils.isSafe(matrix, r, c))
+      return false
+
+    if (visited(r)(c) == true)
+      return false
+
+    if (matrix(r)(c) != str(index))
+      return false
+
+    visited(r)(c) = true
+
+    println(s"Index: $index r: $r, c: $c, str(index) : ${str(index)} matrix(r)(c): ${matrix(r)(c)}")
+
+    var result = false
+
+    /*
+
+    THIS CODE IS BUGGY BECAUSE WE ARE CONTINUING THE DFS FOR ALL CASES
+    IT SHOULD BE AN LOGICAL OR OF ALL POSSIBLE RECURSIVE CALLS
+
+     */
+
+    for (r1 <- r-1 to r+1) {
+      for (c1 <- c-1 to c+1) {
+        if (MatrixUtils.isSafe(matrix, r1, c1)) {
+          result = dfs(matrix, visited, str, index+1, r1, c1, cache)
+        }
+      }
+    }
+
+    result
+  }
+
+
+
+  val matrix = Array(
+    Array('o','a','a','n'),
+    Array('e','t','a','e'),
+    Array('i','h','k','r'),
+    Array('i','f','l','v')
+  )
+
+  val words = List("oath","pea","eat","rain", "kite")
+  //val words = List("eat")
+
+  println(wordSearchII(words, matrix))
+
 }

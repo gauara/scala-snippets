@@ -1,4 +1,6 @@
-package leetcode.hard.arrays
+package leetcode.hard.arrayandstrings
+
+// NOTE - STATUS ACCEPTED
 
 object Set41FirstMissingPositive extends App {
 
