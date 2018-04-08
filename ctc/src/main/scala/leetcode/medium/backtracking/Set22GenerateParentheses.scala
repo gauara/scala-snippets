@@ -44,7 +44,9 @@ object Set22GenerateParentheses extends App {
       val str1 = swap(str, start, i) // horizontally this will grow
 
       // OPTIMIZATION - call only if string changed after swap only except when start and i are not same
-      genParan(result, str1, start + 1)
+      if (!(start != i && str == str1)) {
+        genParan(result, str1, start + 1)
+      }
     }
   }
 
