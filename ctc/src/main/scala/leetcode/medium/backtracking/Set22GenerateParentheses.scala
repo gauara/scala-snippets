@@ -35,22 +35,28 @@ object Set22GenerateParentheses extends App {
 
       if(validateParans(str)) {
         result.+=:(str)
-        println(str)
+        //println(str)
       }
       return
     }
 
+    var alreadySeen: ListBuffer[String] = ListBuffer.empty
     for (i <- start to str.length-1) {
       val str1 = swap(str, start, i) // horizontally this will grow
-
       // OPTIMIZATION - call only if string changed after swap only except when start and i are not same
-      if (!(start != i && str == str1)) {
+      val prefix = str.substring(0, start)
+      val validPrefix = if (start > 0) prefix.nonEmpty && (prefix.count(_ == '(') - prefix.count(_ == ')') >= 0) else true
+
+      if (validPrefix && !(start != i && str == str1 && alreadySeen.contains(str1))) {
+        alreadySeen.append(str1)
         genParan(result, str1, start + 1)
       }
     }
   }
 
   def generateParenthesis(n: Int): List[String] = {
+
+    val start = System.currentTimeMillis()
 
     var result: ListBuffer[String] = ListBuffer.empty[String]
     val s: StringBuffer = new StringBuffer()
@@ -66,6 +72,9 @@ object Set22GenerateParentheses extends App {
 
     println(s"printing result")
     ret.foreach(println)
+    val end = System.currentTimeMillis()
+
+    println(s"Time Elapsed: ${end-start}")
     ret
   }
 
@@ -73,6 +82,6 @@ object Set22GenerateParentheses extends App {
 //  validateParans("((()")
 
   //generateParenthesis(2)
-  generateParenthesis(3)
+  generateParenthesis(8)
 
 }

@@ -47,7 +47,7 @@ object Set49GroupAnagram extends App {
         result.+=(lb)
       }
     }
-    //println(result.mkString)
+    println(result.mkString)
     result.map(_.toList).toList
   }
 
