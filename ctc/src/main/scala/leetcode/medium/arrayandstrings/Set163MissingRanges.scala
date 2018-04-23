@@ -9,10 +9,10 @@ import scala.collection.mutable.ListBuffer
 object Set163MissingRanges extends App {
 
 
-  def getRange(f: Int, t: Int, fromInclusive: Boolean = false, toInclusive: Boolean = false): String = {
+  def getRange(f: Long, t: Long, fromInclusive: Boolean = false, toInclusive: Boolean = false): String = {
 
-    val from: Int = if (fromInclusive) f-1 else f
-    val to: Int = if (toInclusive) t+1 else t
+    val from = if (fromInclusive) f-1 else f
+    val to = if (toInclusive) t+1 else t
     if (to - from > 1) {
        if (to - from == 2) (from+1).toString
        else (from+1).toString + "->" + (to-1).toString
@@ -99,6 +99,12 @@ Output:
 []
 Expected:
 ["0->2147483646"]
+
+
+// Change to Long in getRange function to avoid those Max/Min Value edge cases
+
+The case Array() // somehow is handled in code but I was not smart enough to think through it
+
 
 
  */
