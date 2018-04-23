@@ -4,32 +4,30 @@ object Set3LongestSubstringWithoutRepeating extends App {
 
   def lengthOfLongestSubstring(s: String): Int = {
 
-    if (s.isEmpty)
-      return 0
+    if (s.size <= 1)
+      return s.size
 
     var left = 0
     var right = 0
     var maxLength = 0
-    var breakRight = false
+    var enterLeftLoop = false
 
     var arr: Array[Int] = new Array[Int](256)
     while (right < s.length) {
-      arr(s(right)) += 1
 
-
-      if (arr(s(right)) > 1) {
-        breakRight = true
-        println(s"Right: $right Left: $left Substring: ${s.substring(left, right)}")
-      }
-
+      val c = s.charAt(right)
+      if (arr(c) > 0 ) enterLeftLoop = true
+      arr(c) += 1
       right += 1
-      maxLength = Math.max(right-left, maxLength)
 
-      while (breakRight) {
-        if(arr(s(left)) == 2) breakRight = false
-        arr(s(left)) -= 1
+      while (enterLeftLoop && left < s.length) {
+        val c = s.charAt(left)
+        if(arr(c) > 1) enterLeftLoop = false
+        arr(c) -= 1
         left += 1
       }
+
+      maxLength = Math.max(right-left, maxLength)
     }
     println(s"Given String: $s Max substring length without repeating characters: $maxLength")
     maxLength
@@ -41,6 +39,7 @@ object Set3LongestSubstringWithoutRepeating extends App {
   lengthOfLongestSubstring("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\\\"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~ abcdefg")
   lengthOfLongestSubstring("c")
   lengthOfLongestSubstring("a")
+  lengthOfLongestSubstring("au")
 
   /*
 
