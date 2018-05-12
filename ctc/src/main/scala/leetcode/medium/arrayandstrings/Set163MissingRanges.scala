@@ -10,7 +10,6 @@ object Set163MissingRanges extends App {
 
 
   def getRange(f: Long, t: Long, fromInclusive: Boolean = false, toInclusive: Boolean = false): String = {
-
     val from = if (fromInclusive) f-1 else f
     val to = if (toInclusive) t+1 else t
     if (to - from > 1) {
@@ -25,21 +24,11 @@ object Set163MissingRanges extends App {
     var result: ListBuffer[String] = ListBuffer.empty
     var lowerIndexNotDone = true
 
-    /*
-    if (nums.isEmpty) {
-      if (upper-lower > 1) { // if they are not equal
-        if (upper-lower > 2) result.append(lower.toString + "->" + upper.toString) // equal but single number missing
-        else result.append((lower + 1).toString)
-      }
-    }*/
-
-
     if (nums.isEmpty) {
       if (upper==lower) result.append(lower.toString)
       else result.append(lower.toString + "->" + upper.toString)
     }
 
-    //for(i <- 0 to nums.length-1) {
     var i = 0
     while(i < nums.length) {
       var range = if (i == 0 && lowerIndexNotDone) {

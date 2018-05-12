@@ -48,5 +48,5 @@ object Set15T3Sum extends App {
   }
 
   //threeSum(Array(-4, -1, -1, 0, 1, 2))
-  threeSum(Array(-1, 1, 0, 0, 1, 1, 1, -1, -1, -1))
+  //threeSum(Array(-1, 1, 0, 0, 1, 1, 1, -1, -1, -1))
 }
