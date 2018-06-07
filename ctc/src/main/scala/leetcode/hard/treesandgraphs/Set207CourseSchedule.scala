@@ -3,6 +3,9 @@ package leetcode.hard.treesandgraphs
 //import scala.collection.mutable
 import scala.collection.mutable.Queue
 
+
+// https://leetcode.com/problems/course-schedule/description/
+
 object Set207CourseSchedule extends App {
 
   def canFinish(numCourses: Int, prerequisites: Array[Array[Int]]): Boolean = {
@@ -75,8 +78,6 @@ object Set207CourseSchedule extends App {
       Array(1, 0),
       Array(0, 1)
     ))
-
-
 
   canFinish(7,
     Array(
