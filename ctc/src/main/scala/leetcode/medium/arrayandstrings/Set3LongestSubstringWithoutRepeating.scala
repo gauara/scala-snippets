@@ -1,5 +1,8 @@
 package leetcode.medium.arrayandstrings
 
+
+// https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+
 object Set3LongestSubstringWithoutRepeating extends App {
 
   def lengthOfLongestSubstring(s: String): Int = {

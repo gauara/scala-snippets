@@ -4,6 +4,10 @@ package leetcode.easy.strings
 
 // NOTE - s = "hello", s(0) = 'b' will throw error
 
+
+// https://leetcode.com/problems/reverse-string/description/
+// Array method passes TLE
+
 object ReverseString extends App {
   def reverseString(s: String): String = {
     val arr = s.toArray

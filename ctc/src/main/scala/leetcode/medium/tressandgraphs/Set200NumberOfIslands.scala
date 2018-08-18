@@ -1,5 +1,7 @@
 package leetcode.medium.tressandgraphs
 
+// https://leetcode.com/problems/number-of-islands/description/
+
 object Set200NumberOfIslands extends App {
 
 

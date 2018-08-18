@@ -1,5 +1,7 @@
 package leetcode.medium.arrayandstrings
 
+// https://leetcode.com/problems/increasing-triplet-subsequence/description/
+
 object Set334IncreasingTripletSubsequence extends App {
 
   def increasingTriplet(nums: Array[Int]): Boolean = {

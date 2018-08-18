@@ -1,5 +1,9 @@
 package leetcode.hard.arrayandstrings
 
+
+// https://leetcode.com/problems/game-of-life/description/
+
+
 /*
 
 Any live cell with fewer than two live neighbors dies, as if caused by under-population.
@@ -9,10 +13,6 @@ Any dead cell with exactly three live neighbors becomes a live cell, as if by re
 
 
  */
-
-
-
-
 
 object Set289GameOfLife extends App {
 
