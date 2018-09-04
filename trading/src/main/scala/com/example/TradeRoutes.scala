@@ -77,7 +77,21 @@ trait TradeRoutes extends JsonSupport {
             )
           )
         )
-      }
+      },
+
+      pathPrefix("stocks") {
+        // NOTE This -- need to attach price with segment here, nesting another separate path for price wont work
+        path(Segment/"price") { stock =>
+            get {
+              parameters('start.as[String], 'end.as[String]) { (start, end) =>
+
+                get
+
+                complete((StatusCodes.OK, s"Hit the stocks end point with stock id: $stock , start: $start and end: $end" ))
+              }
+            }
+          }
+        }
     )
 }
 
@@ -88,7 +102,7 @@ curl -H "Content-type: application/json" -X POST -d '{"name": "MrX", "age": 31, 
 
 curl -H "Content-type: application/json" -X POST -d '{
    "id": 1,
-   "typ": "buy",
+   "type": "buy",
    "user": {
       "id": 1,
       "name": "David"
@@ -101,7 +115,7 @@ curl -H "Content-type: application/json" -X POST -d '{
 
 curl -H "Content-type: application/json" -X POST -d '{
    "id": 2,
-   "typ": "buy",
+   "type": "buy",
    "user": {
       "id": 3,
       "name": "Brandon"
@@ -114,7 +128,7 @@ curl -H "Content-type: application/json" -X POST -d '{
 
 curl -H "Content-type: application/json" -X POST -d '{
    "id": 3,
-   "typ": "buy",
+   "type": "buy",
    "user": {
       "id": 2,
       "name": "Omar"
@@ -127,7 +141,7 @@ curl -H "Content-type: application/json" -X POST -d '{
 
 curl -H "Content-type: application/json" -X POST -d '{
    "id": 4,
-   "typ": "buy",
+   "type": "buy",
    "user": {
       "id": 1,
       "name": "David"
@@ -140,7 +154,7 @@ curl -H "Content-type: application/json" -X POST -d '{
 
 curl -H "Content-type: application/json" -X POST -d '{
    "id": 5,
-   "typ": "buy",
+   "type": "buy",
    "user": {
       "id": 3,
       "name": "Brandon"
@@ -153,7 +167,7 @@ curl -H "Content-type: application/json" -X POST -d '{
 
 curl -H "Content-type: application/json" -X POST -d '{
    "id": 6,
-   "typ": "sell",
+   "type": "sell",
    "user": {
       "id": 3,
       "name": "Brandon"
@@ -166,7 +180,7 @@ curl -H "Content-type: application/json" -X POST -d '{
 
 curl -H "Content-type: application/json" -X POST -d '{
    "id": 7,
-   "typ": "buy",
+   "type": "buy",
    "user": {
       "id": 3,
       "name": "Brandon"
@@ -179,7 +193,7 @@ curl -H "Content-type: application/json" -X POST -d '{
 
 curl -H "Content-type: application/json" -X POST -d '{
    "id": 8,
-   "typ": "buy",
+   "type": "buy",
    "user": {
       "id": 3,
       "name": "Brandon"
@@ -192,7 +206,7 @@ curl -H "Content-type: application/json" -X POST -d '{
 
 curl -H "Content-type: application/json" -X POST -d '{
    "id": 9,
-   "typ": "buy",
+   "type": "buy",
    "user": {
       "id": 3,
       "name": "Brandon"
@@ -206,7 +220,7 @@ curl -H "Content-type: application/json" -X POST -d '{
 
 curl -H "Content-type: application/json" -X POST -d '{
    "id": 10,
-   "typ": "buy",
+   "type": "buy",
    "user": {
       "id": 1,
       "name": "David"

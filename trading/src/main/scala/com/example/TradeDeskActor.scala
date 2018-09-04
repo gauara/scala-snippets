@@ -2,20 +2,35 @@ package com.example
 
 
 import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
+import java.time.format.DateTimeFormatter
+
 
 final case class User(
                id: Long,
                name: String
                )
 
-final case class Trade(
+
+
+// Example how fields names can be used if passed that way, e,g shares_number, time_stamp etc
+final case class Trade1(
                         id: Long,
-                        typ: String,
+                        `type`: String,
                         user: User,
                         symbol: String,
-                        shares: Long,
+                        shares_Number: Long,
+                        _price: Double,
+                        time_stamp: String
+                      )
+
+final case class Trade(
+                        id: Long,
+                        `type`: String,
+                        user: User,
+                        symbol: String,
+                        shares: Long, // check above Trade1 for possible field names
                         price: Double,
-                        timestamp: String
+                        timestamp: String //time_stamp will totally work with JsonSpray as long as class field is named so
                       )
 
 
@@ -28,6 +43,8 @@ object TradeDeskActor {
   final case class AddTrade(t: Trade)
   final case object Erase
   final case class GetUserTrades(userId: Long)
+  final case class GetStockSummary(startDate: String, endDate: String)
+  final case class StockSummary(symbol: String, highest: String, lowest: String)
 
   def props: Props = Props[TradeDeskActor]
 
@@ -43,7 +60,7 @@ object TradeDeskActor {
   def tradeFixture(id: Long) = {
     Trade(
       id = id,
-      typ = "buy",
+      `type` = "buy",
       user = userFixture(id),
       symbol = "SMBL",
       shares = 9,
@@ -85,6 +102,11 @@ class TradeDeskActor extends Actor with ActorLogging {
     case GetUserTrades(userId) =>
       val t = trades.filter(_.user.id == userId).toSeq.sortBy(_.id)
       sender() ! Trades(t)
+
+    case GetStockSummary(startDate, endDate) =>
+
+      val formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss")
+
   }
 }
 
